@@ -1,4 +1,4 @@
-### End-to-end RAG app: PDFs to answers (step by step)
+### End-to-end RAG app: PDFs to answers (step by step) - Langchain Based 
 
 You’re building a Retrieval-Augmented Generation (RAG) pipeline. Below is a clean, working, and minimal setup that:
 
