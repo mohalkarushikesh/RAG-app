@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Document QA System &mdash; Retrieval-Augmented Generation</title>
+  <!-- Montserrat (loads when online; robust system fallback otherwise) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+  <!-- Site header -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <div class="site-header__logo" aria-hidden="true">RAG</div>
+      <div class="site-header__titles">
+        <span class="site-header__title">Document QA System</span>
+        <span class="site-header__subtitle">Retrieval-Augmented Generation</span>
+      </div>
+      <div class="site-header__status" id="status-chip" data-status="loading">
+        <span class="status-dot"></span>
+        <span id="status-label">Preparing index&hellip;</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="main">
+    <section class="hero">
+      <div class="grid">
+        <h1 class="hero__heading">Ask questions about your documents</h1>
+        <p class="hero__lead">
+          This service retrieves the most relevant passages from the indexed
+          document and generates an answer grounded in that source material.
+          Ask specific, factual questions for the best results.
+        </p>
+        <p class="hero__meta">
+          <span class="usa-tag">Indexed source</span>
+          <span class="hero__source">{{ pdf_paths }}</span>
+        </p>
+      </div>
+    </section>
+
+    <div class="grid">
+      <div class="card" aria-live="polite">
+        <form id="ask-form" class="ask-form">
+          <label class="usa-label" for="query">Your question</label>
+          <span class="usa-hint" id="query-hint">
+            For example: &ldquo;Who is the founder of Vaccinology?&rdquo;
+          </span>
+          <textarea
+            id="query"
+            name="query"
+            class="usa-textarea"
+            rows="4"
+            placeholder="Type your question&hellip;"
+            aria-describedby="query-hint"
+          ></textarea>
+
+          <div class="ask-form__actions">
+            <button type="submit" id="ask-btn" class="usa-button" disabled>
+              Get answer
+            </button>
+            <button type="button" id="clear-btn" class="usa-button usa-button--outline">
+              Clear
+            </button>
+            <span class="ask-form__spinner" id="spinner" hidden>
+              <span class="spinner" aria-hidden="true"></span> Generating answer&hellip;
+            </span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card answer-card" id="answer-card" hidden>
+        <h2 class="answer-card__heading">Answer</h2>
+        <div class="usa-alert usa-alert--error" id="answer-error" hidden>
+          <div class="usa-alert__body">
+            <p class="usa-alert__text" id="answer-error-text"></p>
+          </div>
+        </div>
+        <p class="answer-card__text" id="answer-text"></p>
+        <p class="answer-card__question" id="answer-question"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">
+        Document QA System &middot; Runs fully offline on locally cached models
+        (distilbert-base-uncased &middot; microsoft/phi-1_5 &middot; FAISS).
+      </p>
+      <p class="site-footer__note">
+        Typeface: Montserrat.
+      </p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

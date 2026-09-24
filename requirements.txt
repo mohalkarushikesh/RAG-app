@@ -1,0 +1,20 @@
+# Core RAG pipeline (all run offline on locally cached models)
+langchain
+langchain-community
+langchain-core
+langchain-huggingface
+langchain-classic
+transformers
+pypdf
+sentence-transformers
+faiss-cpu
+tf-keras
+
+# OCR fallback for scanned / text-as-outline PDFs
+pymupdf
+rapidocr-onnxruntime
+onnxruntime
+numpy
+
+# Web application
+flask

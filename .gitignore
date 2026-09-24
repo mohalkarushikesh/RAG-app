@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+
+# RAG caches:
+#   - The FAISS index dirs are regenerable (fast, no OCR) -> ignore them.
+#   - The extracted-text sidecar is expensive (OCR) and portable -> KEEP it,
+#     so committing it lets OCR never re-run on any machine or CI.
+.rag_cache/*/
+!.rag_cache/text_*.json

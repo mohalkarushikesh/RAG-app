@@ -1,0 +1,371 @@
+/* ==========================================================================
+   Document QA System — U.S. Web Design System (USWDS)-inspired theme
+   Light theme. Typeface: Montserrat. Color tokens mirror USWDS defaults.
+   Self-contained (no CDN dependency) so it works on an offline machine.
+   ========================================================================== */
+
+:root {
+  /* USWDS-derived color tokens */
+  --color-primary: #005ea2;        /* primary */
+  --color-primary-dark: #1a4480;   /* primary-dark */
+  --color-primary-darker: #162e51; /* primary-darker */
+  --color-primary-light: #d9e8f6;
+  --color-base-darkest: #1b1b1b;   /* ink */
+  --color-base-dark: #565c65;
+  --color-base: #71767a;
+  --color-base-light: #a9aeb1;
+  --color-base-lighter: #dfe1e2;
+  --color-base-lightest: #f0f0f0;
+  --color-white: #ffffff;
+  --color-gray-2: #f9f9f9;
+  --color-error: #b50909;
+  --color-error-light: #f4e3db;
+  --color-success: #00a91c;
+  --color-warning-bg: #f5f5f0;
+
+  --font-sans: "Montserrat", "Public Sans", "Helvetica Neue", Helvetica, Arial,
+    system-ui, sans-serif;
+
+  --radius: 4px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(27, 27, 27, 0.12);
+  --maxw: 64rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure the `hidden` attribute always wins, even on elements that set an
+   explicit `display` (e.g. the spinner uses inline-flex, which would otherwise
+   override the browser default `[hidden] { display: none }`). */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--color-base-darkest);
+  background-color: var(--color-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- USWDS government banner ------------------------------------------- */
+.usa-banner {
+  background-color: var(--color-base-lightest);
+  font-size: 0.8125rem;
+}
+.usa-banner__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.usa-banner__flag {
+  width: 1rem;
+  height: auto;
+}
+.usa-banner__text {
+  margin: 0;
+  color: var(--color-base-darkest);
+}
+
+/* --- Site header ------------------------------------------------------- */
+.site-header {
+  background-color: var(--color-primary-darker);
+  color: var(--color-white);
+}
+.site-header__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.site-header__logo {
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: var(--radius);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-size: 0.9rem;
+}
+.site-header__titles {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.site-header__title {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.site-header__subtitle {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--color-primary-light);
+}
+.site-header__status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.status-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #f2c94c;
+  box-shadow: 0 0 0 3px rgba(242, 201, 76, 0.25);
+}
+.site-header__status[data-status="ready"] .status-dot {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(0, 169, 28, 0.25);
+}
+.site-header__status[data-status="error"] .status-dot {
+  background-color: #ff8f8f;
+  box-shadow: 0 0 0 3px rgba(255, 143, 143, 0.25);
+}
+
+/* --- Layout ------------------------------------------------------------ */
+.main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+.grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* --- Hero -------------------------------------------------------------- */
+.hero {
+  background-color: var(--color-primary-light);
+  border-bottom: 1px solid var(--color-base-lighter);
+  padding: 2.5rem 0;
+  margin-bottom: 2rem;
+}
+.hero__heading {
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary-darker);
+}
+.hero__lead {
+  margin: 0 0 1rem;
+  max-width: 42rem;
+  font-size: 1.05rem;
+  color: var(--color-base-dark);
+}
+.hero__meta {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.hero__source {
+  font-weight: 600;
+  color: var(--color-primary-darker);
+}
+.usa-tag {
+  display: inline-block;
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius);
+}
+
+/* --- Cards ------------------------------------------------------------- */
+.card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-base-lighter);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Form -------------------------------------------------------------- */
+.usa-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.usa-hint {
+  display: block;
+  color: var(--color-base-dark);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.usa-textarea {
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-base-darkest);
+  padding: 0.75rem;
+  border: 1px solid var(--color-base-dark);
+  border-radius: var(--radius);
+  resize: vertical;
+}
+.usa-textarea:focus,
+.usa-button:focus {
+  outline: 0.25rem solid #2491ff;
+  outline-offset: 0;
+}
+.ask-form__actions {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* --- Buttons (USWDS) --------------------------------------------------- */
+.usa-button {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 0.9;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+.usa-button:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+}
+.usa-button:disabled {
+  background-color: var(--color-base-light);
+  cursor: not-allowed;
+}
+.usa-button--outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+.usa-button--outline:hover:not(:disabled) {
+  background-color: transparent;
+  color: var(--color-primary-dark);
+  box-shadow: inset 0 0 0 2px var(--color-primary-dark);
+}
+
+/* --- Spinner ----------------------------------------------------------- */
+.ask-form__spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-base-dark);
+  font-size: 0.9rem;
+}
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--color-base-lighter);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Answer ------------------------------------------------------------ */
+.answer-card {
+  border-left: 4px solid var(--color-primary);
+}
+.answer-card__heading {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-primary-darker);
+}
+.answer-card__text {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+  white-space: pre-wrap;
+}
+.answer-card__question {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-base-dark);
+  border-top: 1px solid var(--color-base-lighter);
+  padding-top: 0.75rem;
+}
+
+/* --- Alerts (USWDS) ---------------------------------------------------- */
+.usa-alert {
+  border-left: 0.5rem solid var(--color-error);
+  background-color: var(--color-error-light);
+  padding: 1rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin-bottom: 1rem;
+}
+.usa-alert__text {
+  margin: 0;
+  font-weight: 600;
+}
+
+/* --- Footer ------------------------------------------------------------ */
+.site-footer {
+  flex-shrink: 0;
+  background-color: var(--color-primary-darker);
+  color: var(--color-white);
+  margin-top: 2rem;
+}
+.site-footer__inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+.site-footer__text {
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+}
+.site-footer__note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-primary-light);
+}
+
+/* --- Responsive -------------------------------------------------------- */
+@media (max-width: 40rem) {
+  .site-header__status {
+    display: none;
+  }
+  .hero__heading {
+    font-size: 1.5rem;
+  }
+}
